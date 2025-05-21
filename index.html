@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>拼好图工具🛠️</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="font-normal">
+
+<!-- 品牌信息 -->
+<header style="text-align: center; margin-bottom: 30px;">
+  <h1 style="margin: 10px 0; color: #4a90e2;">拼好图工具🛠️</h1>
+  <p style="margin: 0; color: #777;">一个简单好用的图像拆分与合成工具</p>
+  <p style="margin: 0; color: #777;">你想要的功能我都有</p>
+</header>
+  
+<div class="font-size-selector">
+  <label for="fontSizeSelect">字体大小：</label>
+  <select id="fontSizeSelect">
+    <option value="normal">默认</option>
+    <option value="medium">中号</option>
+    <option value="large">大号</option>
+    <option value="xlarge">超大</option>
+  </select>
+</div>
+
+<section style="text-align: center; margin: 40px 0;">
+  <h2>赞赏作者🧧</h2>
+  <p>如果你觉得这个工具对你有帮助，可以请作者喝杯奶茶❤️~</p>
+  <div style="margin-top: 20px;">
+    <button onclick="showQR('wechat')" style="padding:10px 20px;margin:5px;background:#2DC100;color:#fff;border:none;border-radius:5px;cursor:pointer;">微信支付</button>
+    <button onclick="showQR('alipay')" style="padding:10px 20px;margin:5px;background:#00A0E9;color:#fff;border:none;border-radius:5px;cursor:pointer;">支付宝</button>
+    <button onclick="showQR('unionpay')" style="padding:10px 20px;margin:5px;background:#D81E06;color:#fff;border:none;border-radius:5px;cursor:pointer;">银联支付</button>
+  </div>
+</section>
+
+<p style="text-align: center;margin-top:15px; color:#555;">
+  如需<span style="color:#e74c3c;">无水印或自定义水印</span>版本，<br/>欢迎联系作者购买：
+  <a href="mailto:nanranblush@foxmail.com" style="color:#4a90e2; text-decoration:none;">nanranblush@foxmail.com</a>
+</p>
+
+<!-- 二维码弹窗 -->
+<div id="qrModal">
+  <div class="qr-dialog">
+    <h3 id="qrTitle"></h3>
+    <img id="qrImage" src="" alt="扫码支付" />
+    <div>
+      <button onclick="closeQR()">关闭</button>
+    </div>
+  </div>
+</div>
+
+<h2>上传原图拆分✂️</h2>
+
+<div class="input-group">
+  <label for="originalUpload" class="input-file-label">选择原图</label>
+  <input type="file" id="originalUpload" class="hidden-file-input" accept="image/*" />
+  <button onclick="clearOriginal()">清空上传的原图</button>
+</div>
+
+<div id="previewOriginalContainer"></div>
+
+<div class="input-group">
+  <div>
+    <label for="blockSize">像素团块大小(px)：</label>
+    <input type="number" id="blockSize" value="40" min="5" max="200" />
+  </div>
+  <div>
+    <label for="splitCount">拆分图片数量：</label>
+    <input type="number" id="splitCount" value="6" min="1" max="20" />
+  </div>
+</div>
+
+<div class="input-group">
+  <label><input type="checkbox" id="invertSplitCheckbox" />反转所有拆分图颜色</label>
+</div>
+
+<div class="button-group">
+  <button onclick="splitImage()">拆分图片</button>
+  <button onclick="downloadAllSplit()">下载所有拆分图</button>
+  <button onclick="clearSplit()">清空拆分图</button>
+</div>
+
+<div id="splitContainer"></div>
+
+<hr />
+
+<h2>上传拆分图合成🔨</h2>
+
+<div class="input-group">
+  <label for="splitUploads" class="input-file-label">选择拆分图</label>
+  <input type="file" id="splitUploads" class="hidden-file-input" accept="image/*" multiple />
+  <button onclick="clearUploadedSplits()">清空上传的拆分图</button>
+</div>
+
+<div id="previewSplitUploadsContainer"></div>
+
+<div class="input-group">
+  <label><input type="checkbox" id="invertSplitBeforeCompose" />合成前反转上传拆分图颜色</label>
+</div>
+
+<div class="input-group">
+  <label><input type="checkbox" id="invertComposedCheckbox" />反转合成图颜色</label>
+</div>
+
+<div class="button-group">
+  <button onclick="composeImages()">合成图片</button>
+  <button onclick="downloadComposed()">下载合成图</button>
+  <button onclick="clearComposed()">清空合成图</button>
+</div>
+
+<div id="composedContainer"></div>
+
+<!-- 版权信息（页面底部） -->
+<footer style="text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid #ccc; color: #999; font-size: 0.9rem;">
+  版权所有 © 2025 拼好图工具🛠️ | 由@zyy321168313提供支持
+</footer>
+</body>
+</html>
